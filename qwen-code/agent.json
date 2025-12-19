@@ -10,10 +10,6 @@
     "npx": {
       "package": "@qwen-code/qwen-code@latest",
       "args": ["--experimental-acp"]
-    },
-    "bunx": {
-      "package": "@qwen-code/qwen-code@latest",
-      "args": ["--experimental-acp"]
     }
   }
 }

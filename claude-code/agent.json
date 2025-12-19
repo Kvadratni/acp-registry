@@ -9,9 +9,6 @@
   "distribution": {
     "npx": {
       "package": "@zed-industries/claude-code-acp"
-    },
-    "bunx": {
-      "package": "@zed-industries/claude-code-acp"
     }
   }
 }

@@ -44,10 +44,6 @@ https://github.com/agentclientprotocol/registry/releases/latest/download/<agent-
           "package": "@scope/package",
           "args": ["--acp"]
         },
-        "bunx": {
-          "package": "@scope/package",
-          "args": ["--acp"]
-        },
         "uvx": {
           "package": "package-name",
           "args": ["serve"]
@@ -64,7 +60,6 @@ https://github.com/agentclientprotocol/registry/releases/latest/download/<agent-
 |------|-------------|---------|
 | `binary` | Platform-specific executables | Download, extract, run |
 | `npx` | npm packages | `npx <package> [args]` |
-| `bunx` | npm packages via Bun | `bunx <package> [args]` |
 | `uvx` | PyPI packages via uv | `uvx <package> [args]` |
 
 ## Icons

@@ -56,9 +56,6 @@
         "npx": {
           "$ref": "#/definitions/packageDistribution"
         },
-        "bunx": {
-          "$ref": "#/definitions/packageDistribution"
-        },
         "uvx": {
           "$ref": "#/definitions/packageDistribution"
         }

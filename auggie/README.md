@@ -8,8 +8,6 @@ Available via npm:
 
 ```bash
 npx @augmentcode/auggie --acp
-# or
-bunx @augmentcode/auggie --acp
 ```
 
 ## Resources

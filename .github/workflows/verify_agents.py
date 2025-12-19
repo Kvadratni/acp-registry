@@ -271,37 +271,6 @@ def verify_npx(agent: dict, sandbox: Path, timeout: int, verbose: bool) -> Resul
         return Result(agent_id, "npx", False, msg)
 
 
-def verify_bunx(agent: dict, sandbox: Path, timeout: int, verbose: bool) -> Result:
-    """Verify bunx distribution."""
-    agent_id = agent["id"]
-
-    if not check_command_exists("bun"):
-        return Result(agent_id, "bunx", False, "bun not installed", skipped=True)
-
-    bunx_dist = agent["distribution"].get("bunx", {})
-    package = bunx_dist.get("package", "")
-    args = bunx_dist.get("args", [])
-    env = bunx_dist.get("env", {})
-    env["BUN_INSTALL_CACHE_DIR"] = str(sandbox / "bun-cache")
-
-    print(f"    → Running: bunx {package} {' '.join(args)}")
-
-    cmd = ["bunx", package] + args
-    exit_code, stdout, stderr = run_process(cmd, sandbox, env, timeout)
-
-    if exit_code is None:
-        return Result(agent_id, "bunx", True, "Started successfully (terminated after timeout)")
-    elif exit_code == 0:
-        return Result(agent_id, "bunx", True, "Exited cleanly")
-    else:
-        # Check if it's a "needs input" error (still means package works)
-        combined = (stdout + stderr).lower()
-        if "input" in combined or "prompt" in combined or "stdin" in combined:
-            return Result(agent_id, "bunx", True, "Package works (needs input)")
-        msg = stderr[:200] if stderr else f"Exit code: {exit_code}"
-        return Result(agent_id, "bunx", False, msg)
-
-
 def verify_uvx(agent: dict, sandbox: Path, timeout: int, verbose: bool) -> Result:
     """Verify uvx distribution."""
     agent_id = agent["id"]
@@ -397,8 +366,6 @@ def verify_agent(
             result = verify_binary(agent, sandbox, timeout, verbose)
         elif dtype == "npx":
             result = verify_npx(agent, sandbox, timeout, verbose)
-        elif dtype == "bunx":
-            result = verify_bunx(agent, sandbox, timeout, verbose)
         elif dtype == "uvx":
             result = verify_uvx(agent, sandbox, timeout, verbose)
         else:
@@ -457,7 +424,7 @@ Examples:
 """,
     )
     parser.add_argument("--agent", "-a", help="Verify specific agent IDs (comma-separated)")
-    parser.add_argument("--type", "-t", choices=["binary", "npx", "bunx", "uvx"],
+    parser.add_argument("--type", "-t", choices=["binary", "npx", "uvx"],
                         help="Verify specific distribution type only")
     parser.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT,
                         help=f"Process timeout in seconds (default: {DEFAULT_TIMEOUT})")

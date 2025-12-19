@@ -64,16 +64,12 @@ For standalone executables:
 
 Supported platforms: `darwin-aarch64`, `darwin-x86_64`, `linux-aarch64`, `linux-x86_64`, `windows-aarch64`, `windows-x86_64`
 
-### npm Package (npx/bunx)
+### npm Package (npx)
 
 ```json
 {
   "distribution": {
     "npx": {
-      "package": "@your-scope/your-package@1.0.0",
-      "args": ["--acp"]
-    },
-    "bunx": {
       "package": "@your-scope/your-package@1.0.0",
       "args": ["--acp"]
     }

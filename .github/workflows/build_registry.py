@@ -18,7 +18,7 @@ except ImportError:
 REGISTRY_VERSION = "1.0.0"
 SKIP_DIRS = {".claude", ".git", ".github", ".idea", "__pycache__", "dist"}
 REQUIRED_FIELDS = {"id", "name", "version", "description", "distribution"}
-VALID_DISTRIBUTION_TYPES = {"binary", "npx", "bunx", "uvx"}
+VALID_DISTRIBUTION_TYPES = {"binary", "npx", "uvx"}
 VALID_PLATFORMS = {
     "darwin-aarch64",
     "darwin-x86_64",
@@ -85,7 +85,7 @@ def validate_distribution_urls(distribution: dict) -> list[str]:
 
     # Check npm package URLs (registry.npmjs.org)
     seen_npm = set()
-    for dist_type in ("npx", "bunx"):
+    for dist_type in ("npx",):
         if dist_type in distribution:
             package = distribution[dist_type].get("package", "")
             pkg_name = extract_npm_package_name(package)
@@ -243,7 +243,7 @@ def validate_agent(agent: dict, agent_dir: str, schema: dict | None = None) -> l
                                 errors.append(f"Platform {platform} missing 'cmd' field")
 
             # Validate package distributions
-            for dist_type in ("npx", "bunx", "uvx"):
+            for dist_type in ("npx", "uvx"):
                 if dist_type in dist:
                     pkg_dist = dist[dist_type]
                     if "package" not in pkg_dist:
