@@ -1,5 +1,5 @@
 {
-  "id": "claude",
+  "id": "claude-acp",
   "name": "Claude Code",
   "version": "0.12.6",
   "description": "ACP wrapper for Anthropic's Claude",

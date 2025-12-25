@@ -1,5 +1,5 @@
 {
-  "id": "codex",
+  "id": "codex-acp",
   "name": "Codex CLI",
   "version": "0.7.4",
   "description": "ACP adapter for OpenAI's coding assistant",
