@@ -4,7 +4,7 @@
 
 A registry of agents and extensions implementing the [Agent Client Protocol (ACP)](https://github.com/agentclientprotocol/agent-client-protocol).
 
-> **Note**: This registry only includes agents that support authentication. Agents must implement auth flows to be listed here.
+> **Note**: This registry only includes agents that support [authentication](https://github.com/agentclientprotocol/agent-client-protocol/blob/main/docs/rfds/auth-methods.mdx). Agents must implement auth flows to be listed here.
 
 ## Included Agents
 
