@@ -20,6 +20,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write
 
 jobs:
   check-versions:
@@ -188,6 +189,11 @@ jobs:
           EOF
           )"
           git push origin main
+
+      - name: Trigger registry build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run build-registry.yml
 
   notify-apply-failure:
     needs: [check-versions, apply-updates]
