@@ -1,0 +1,16 @@
+{
+  "id": "kilo-acp",
+  "name": "Kilo ACP",
+  "version": "0.1.0",
+  "description": "ACP adapter for Kilo Code CLI - bridges Agent Client Protocol to Kilo",
+  "repository": "https://github.com/Kvadratni/kilo-acp",
+  "authors": [
+    "Kvadratni"
+  ],
+  "license": "Apache-2.0",
+  "distribution": {
+    "npx": {
+      "package": "kilo-acp@0.1.0"
+    }
+  }
+}
