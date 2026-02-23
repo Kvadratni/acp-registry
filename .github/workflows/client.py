@@ -170,7 +170,7 @@ def run_auth_check(
         )
 
         # Send initialize request with capabilities
-        send_jsonrpc(proc, "initialize", {
+        params = {
             "protocolVersion": 1,
             "clientInfo": {"name": "ACP Registry Validator", "version": "1.0.0"},
             "clientCapabilities": {
@@ -184,7 +184,9 @@ def run_auth_check(
                     "terminal-auth": True,
                 },
             },
-        })
+        }
+        
+        send_jsonrpc(proc, "initialize", params)
 
         # Read response
         response = read_jsonrpc(proc, timeout)
